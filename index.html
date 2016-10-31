@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+    <style>
+        .globe {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -2.5em;
+            margin-left: -2.5em;
+            width: 5em;
+            height: 5em;
+            z-index: 7;
+            transform: scale(3.6);
+        }
+        .globe svg {
+            position: absolute;
+            background-color: rgba(0,0,0,0.5);
+            right: 0;
+            bottom: 0;
+            border-radius: 50%;
+            cursor: pointer;
+            fill: #fff;
+            -webkit-transition: 0.25s background-color ease;
+                    transition: 0.25s background-color ease;
+        }
+        globe svg:hover {
+            background-color: rgba(0,0,0,0.75);
+            }
+        .pointer {
+            position: absolute;
+            width: 0.6875em;
+            height: 100%;
+            top: 50%;
+            left: 50%;
+            margin-left: -0.34375em;
+            margin-top: -100%;
+            background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAmCAYAAADAzmuWAAADJElEQVRIDbWWyWsUQRTGv9c9JiSaoBEXFI0eBEHw4E3xKDkENCoajHoxf4UI4nJQ3BAXRL14SiJEMclABsQNEXIQcQdBJGpM4r4kMZNZuj6p1p5U18wkPST2pd773le/eVPVXd2CIldyZ30tpWybCOpJrhTIAm0l8FnAVyS6Rcm1iqsdbwshxBaHt9TNj1VWHIZIM4AZdj2Uk1kAVzzF/bPauj6ZtRB4dEfDOrhoF5FFpmmymMSgKK+xoi3+IPDmwMmmjevhOrcAKQ+KpY1MQbGuorXrvp7ng5PbNy5lmftYBDWlwcJukj/EkzV63R1dYpl7YqpQv0uROXRxyo9Hmjatdl3nafi3p5aprFrjiCONU8PkzxZXGmMi2JBfGlc8RXT2DaDny3dfXDuvBg1LFsF1cvs+bg4iwYYYiCV/tzBQw6OGJvrHb9Eg3lq7OGwMZbLUCZ6okG4kQaeGlOve1MxYiLkOBT9NcTpiCr45QjyaCKbX1L4KaaZHyGcxiuoWOHVmwYz1RukrWJJg80yPHVOYkJHt9Qvd8rL3kx449uyiOVNeKrPMmdXe/VERrUV9JRZIXNJM/5HOpL1DADIlMvLtRFKlM0d1wQfPbo/3kup0vrM0RVGd1N3mwDoY+jJ2mMS70lCGm3j9eWDoSKD4Hetk4c2bvz3lNYNkUCxhVFBe8/J798aCOTmwFqra4ncIngmKUUe9jObbQ88LgbXQ/z2zF8CLqFCQz3vTb/bZ/jzwikQipejpF6myzQVypSh7VrW/TNu1PLA2zGyJPyR50TbbOYELM1s7Ch4JBcEakFXqAMghG5bLiV/Z38MHc7kVFAVXt8W/Ajhu+Y1UHau+cfubIYTComDtGkX6XMGuiV8jwzgfIlnJhOC5LYkhCi5bc0CoS/O6uoZt3cwnBPvGLM5ad4gCMudMSKF4UnDl1c4+kP7XjQ8g71a2JD4UgpnapGBtVmDuWDVjE2THkcDZdOr6vzNEZejdsCFTypO7Gp6N7t78JCokFtVIkQcgozzmPjIyWBR6gP8ABj39wvWi/sPIHaeFA/S86V+KVGZkMDtWFRn8B9mWQZK4mmdgAAAAAElFTkSuQmCC");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center bottom;
+            z-index: 1;
+            opacity: 1;
+            -webkit-transition: opacity 0.1s;
+                    transition: opacity 0.1s;
+            -webkit-animation: bubble-up 0.2s cubic-bezier(0, 0.7, 0.73, 0.87);
+                    animation: bubble-up 0.2s cubic-bezier(0, 0.7, 0.73, 0.87);
+            -webkit-transform-origin: bottom;
+                -ms-transform-origin: bottom;
+                    transform-origin: bottom;
+        }
+        .pointer--hidden {
+            opacity: 0;
+            -webkit-animation: none;
+                    animation: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="globe">
+        <div class="pointer"></div>
+    </div>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="js/topojson.js"></script>
+    <script src="js/globe.js"></script>
+    <script>
+        (function(){
+            var options = {
+                size: 80,
+                selector: '.globe'
+            };
+            window.globe.init(options);
+            window.globe.set(31.2304,121.4737);
+        })()
+    </script>
+</body>
+</html>
